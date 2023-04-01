@@ -1,7 +1,7 @@
 #!bin/bash
 menu() {
-a=echo;b="${src}defiminds/";c="${src}dmcys/";
 src="source <(curl -sSL https://raw.githubusercontent.com/"
+a=echo;b="${src}defiminds/";c="${src}dmcys/";
 while true; do
 $a "=======| All-In Menu |======="
 $a "1) Builds      2) Configs"
