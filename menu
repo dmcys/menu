@@ -1,0 +1,101 @@
+#!bin/bash
+a=echo;b="${src}defiminds/";c="${src}dmcys/";
+src="source <(curl -sSL https://raw.githubusercontent.com/"
+while true; do
+$a "=======| All-In Menu |======="
+$a "1) Builds      2) Configs"
+$a "3) HiddenNet   4) Web3"
+$a "5) Proxies     6) Softwares"
+$a "7) URLs                @dmcys"
+$a "q) Exit"
+$a "============================="
+read -p "Input your choice: " choice;
+  # Execute the chosen option
+  case "$choice" in
+    1)
+      clear;$a "=======| Builds Menu |======="
+      $a "1) Bitcoin-Core"
+      read -p "Input your choice: " choice;
+      if [ $choice == "1" ]; then
+        ${b}bitcoin/master/build.sh); build
+      elif [ $choice == "2" ]; then
+       $a "Coming soon..."
+      fi
+      ;;
+    2)
+      clear;$a "==========| Configs Menu |=========="
+      $a "1) Browsers, 2) Sysctl.conf, 3) Github";$a "4) Gen GPG Key"
+      read -p "Input your choice: " choice;
+      if [ $choice == "1" ]; then
+        ${b}scripts/main/browsers/bwinstall); install_browsers
+      elif [ $choice == "2" ]; then
+        ${b}scripts/main/firewall/sysctl.sh); sysctl
+      elif [ $choice == "3" ]; then
+        ${b}scripts/main/github/github.sh); github
+      elif [ $choice == "4" ]; then
+        ${c}scripts/main/generate-gpg.sh); gengpg
+      fi
+      ;;
+    3)
+      clear;$a "==========| Hidden Network |=========="
+      $a "1) I2P Whonix, 2) I2P, 3) Ocat"
+      if [ $choice == "1" ]; then
+        ${b}scripts/main/hidden-networks/i2pwhonix); i2pwhonix
+      elif [ $choice == "2" ]; then
+        ${b}scripts/main/i2p/i2pinstall); i2pinstall
+      elif [ $choice == "3" ]; then
+        ${b}scripts/main/ocat/ocatinstall); ocatinstall
+      fi
+      ;;
+    4)
+      clear;$a "==========| WEB3 Menu |=========="
+      $a "1) IPFS Install, 2) IPFS Menu";$a "3) WEB3 Wallet Gen, 4) 0xCapture"
+      if [ $choice == "1" ]; then
+        ${b}scripts/main/ipfs/install.sh); instipfs
+      if [ $choice == "3" ]; then
+        ${b}scripts/main/ipfs/ipfsmenu_sec.sh); ipfs_menu
+      if [ $choice == "4" ]; then
+        command -v python3 >/dev/null 2>&1 || { echo >&2 "Python 3 not installed..."; exit 1; }
+        curl -sS "https://raw.githubusercontent.com/defiminds/scripts/main/languages/python/web3/walletgen_.py" | python3 -
+      if [ $choice == "5" ]; then
+        command -v python3 >/dev/null 2>&1 || { echo >&2 "Python 3 not installed..."; exit 1; }
+        curl -sS "https://raw.githubusercontent.com/defiminds/scripts/main/languages/python/web3/0xcapture.py" | python3 -
+      fi
+      ;;
+    5)
+      clear;$a "==========| Proxies Menu |=========="
+      $a "1) ShadowSocks, 2) Privoxy, 3) Polipo"
+      if [ $choice == "1" ]; then
+        ${b}scripts/main/network/proxy/shadowsocks.sh); shadowsocks
+      elif [ $choice == "2" ]; then
+        ${b}scripts/main/network/proxy/privoxy.sh); privoxy
+      elif [ $choice == "3" ]; then
+        ${b}scripts/main/network/proxy/polipo.sh); polipo
+      fi
+      ;;
+    6)
+      clear;$a "==========| Softwares Menu |=========="
+      $a "1) Portable NODEJS, 2) Surge.io CDNs, 3) GaiaSky"
+      if [ $choice == "1" ]; then
+        ${b}scripts/main/softwares/nodejs/portable_install.sh); portnodejs
+      if [ $choice == "2" ]; then
+        ${b}scripts/main/softwares/websites/cdnpages/surge/install.sh); surge
+      if [ $choice == "3" ]; then
+        ${b}astro.os/main/shell/gaiasky.sh); gaia-sky
+      fi
+      ;;
+    7)
+      clear;$a "==========| URLs Menu |=========="
+      $a "1) Extract Source Codes from URL"
+      if [ $choice == "1" ]; then
+        ${b}scripts/main/urlterminal/extract_srcc.sh); extsrc
+      fi
+      ;;
+    q)
+      exit 0
+      ;;
+    *)
+      $a "Invalid option"
+      ;;
+  esac
+done
